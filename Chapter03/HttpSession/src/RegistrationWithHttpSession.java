@@ -59,6 +59,9 @@ public class RegistrationWithHttpSession extends HttpServlet {
 			address.setCity(city);
 			address.setState(state);
 			address.setZip(zip);
+			
+			//NOrmal Constructor
+//			Address add = new Address(.add...)
 
 			// Get an HttpSession or create one if it does not exist
 			HttpSession httpSession = request.getSession();
