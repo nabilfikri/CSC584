@@ -15,8 +15,7 @@ public class SimpleJDBC {
 		Statement statement = connection.createStatement();
 
 		// Execute a statement
-		ResultSet resultSet = statement.executeQuery
-				("SELECT * FROM student");
+		ResultSet resultSet = statement.executeQuery("SELECT * FROM student");
 
 		// Iterate through the result and print the student names
 		while (resultSet.next()){
