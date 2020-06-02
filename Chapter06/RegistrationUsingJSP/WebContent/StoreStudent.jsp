@@ -17,7 +17,7 @@
 
       out.println(addressId.getFirstName() + " " + 
         addressId.getLastName() + " is now registered in the database");
-      out.close(); // Close stream
+      //out.close(); // Close stream
     %>
 </body>
 </html>
