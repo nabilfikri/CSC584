@@ -1,9 +1,9 @@
 package chapter9;
 
 public class Loan {
+	private double loanAmount;
 	private double annualInterestRate;
 	private int numberOfYears;
-	private double loanAmount;
 	private java.util.Date loanDate;
 
 	/** Default constructor */
