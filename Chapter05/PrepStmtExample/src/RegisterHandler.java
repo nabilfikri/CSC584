@@ -1,0 +1,97 @@
+
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/RegisterHandler")
+public class RegisterHandler extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private PreparedStatement pstmt;
+
+    public RegisterHandler() {
+        super();
+    }
+
+	@Override
+	public void init() throws ServletException {
+		super.init();
+		initializeJdbc();
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		
+		// Obtain data from the form
+		String lastName = request.getParameter("lastName");
+		String firstName = request.getParameter("firstName");
+		String mi = request.getParameter("mi");
+		String phone = request.getParameter("telephone");
+		String email = request.getParameter("email");
+		String street = request.getParameter("street");
+		String city = request.getParameter("city");
+		String state = request.getParameter("state");
+		String zip = request.getParameter("zip");
+		
+		//TODO: Data validation
+		
+		try {
+			
+			storeStudent(lastName, firstName, mi, phone, email, street, city, state, zip);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		out.println(firstName + " " + lastName + " is now registered in the database");
+	}
+	
+	/** Initialize prepared stmt */
+	private void initializeJdbc() {
+		try {
+			// Load the JDBC driver
+			Class.forName("com.mysql.jdbc.Driver");
+			System.out.println("Driver loaded");
+
+			// Establish a connection
+			Connection conn = DriverManager.getConnection
+					("jdbc:mysql://localhost/sampledb", "root", "");
+			System.out.println("Database connected");
+
+			// Create a Statement
+			pstmt = conn.prepareStatement("insert into Address " +
+					"(lastName, firstName, mi, telephone, email, street, city, "
+					+ "state, zip) values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+		}
+		catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+	
+	/** Store a student record to the database */
+	private void storeStudent(String lastName, String firstName,
+			String mi, String phone, String email, String address,
+			String city, String state, String zip) throws SQLException {
+		pstmt.setString(1, lastName);
+		pstmt.setString(2, firstName);
+		pstmt.setString(3, mi);
+		pstmt.setString(4, phone);
+		pstmt.setString(5, email);
+		pstmt.setString(6, address);
+		pstmt.setString(7, city);
+		pstmt.setString(8, state);
+		pstmt.setString(9, zip);
+		pstmt.executeUpdate();
+	}
+
+}
