@@ -20,21 +20,14 @@ public class SimpleRegistration extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PreparedStatement pstmt;
 
-	/** Initialize variables */
 	public void init() throws ServletException {
 		initializeJdbc();
 	}
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public SimpleRegistration() {
 		super();
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
@@ -95,9 +88,6 @@ public class SimpleRegistration extends HttpServlet {
 		out.close(); // Close stream
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();

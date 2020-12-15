@@ -60,7 +60,7 @@ public class RegistrationWithHttpSession extends HttpServlet {
 			address.setState(state);
 			address.setZip(zip);
 			
-			//NOrmal Constructor
+			//Normal Constructor
 //			Address add = new Address(.add...)
 
 			// Get an HttpSession or create one if it does not exist

@@ -45,7 +45,7 @@ public class RegistrationWithCookies extends HttpServlet {
 		String zip = request.getParameter("zip");
 
 		if (lastName.length() == 0 || firstName.length() == 0) {
-			out.println("Last Name and First Name are required");
+			out.println("Last Name and First Name are required ");
 		}
 		else {
 			// Create cookies and send cookies to browsers
