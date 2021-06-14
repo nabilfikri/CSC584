@@ -14,42 +14,25 @@
 <body>
 	<h1>Registration Using JSP</h1>
 
-	<%    
-    if (addressId.getLastName() == null || 
-        addressId.getFirstName() == null) {
-      out.println("Last Name and First Name are required");
-      return; // End the method
-    }
-    %>
+	    
+<%	if (addressId.getLastName() == null || addressId.getFirstName() == null) {	%>
+		Last Name and First Name are required
+<%  }    %>
 
 	<p>You entered the following data</p>
-	<p>
-		Last name:
-		<%= addressId.getLastName() %></p>
-	<p>
-		First name:
-		<%= addressId.getFirstName() %></p>
-	<p>
-		MI:
-		<%= addressId.getMi() %></p>
-	<p>
-		Telephone:
-		<%= addressId.getTelephone() %></p>
-	<p>
-		Email:
-		<%= addressId.getEmail() %></p>
-	<p>
-		Address:
-		<%= addressId.getStreet() %></p>
-	<p>
-		City:
-		<%= addressId.getCity() %></p>
-	<p>
-		State:
-		<%= addressId.getState() %></p>
-	<p>
-		Zip:
-		<%= addressId.getZip() %></p>
+	
+	<p>Last name: <jsp:getProperty property="lastName" name="addressId"/></p>
+	<p>First name: <jsp:getProperty property="firstName" name="addressId"/></p>
+	<p>MI: <jsp:getProperty property="mi" name="addressId"/></p>
+	<p>Telephone: <jsp:getProperty property="telephone" name="addressId"/></p>
+	<p>Email: <jsp:getProperty property="email" name="addressId"/></p>
+	<p>Address: <jsp:getProperty property="street" name="addressId"/></p>
+	<p>City: <jsp:getProperty property="city" name="addressId"/></p>
+	<p>State: <jsp:getProperty property="state" name="addressId"/></p>
+	<p>Zip: <jsp:getProperty property="zip" name="addressId"/></p>
+	
+	<!-- similar to < % = addressId.getLastName() %> -->
+	
 
 	<!-- Set the action for processing the answers -->
 	<form method="post" action="StoreStudent.jsp">
