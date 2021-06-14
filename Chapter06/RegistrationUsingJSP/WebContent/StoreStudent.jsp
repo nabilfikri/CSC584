@@ -12,12 +12,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%    
-      storeDataId.storeStudent(addressId);
 
-      out.println(addressId.getFirstName() + " " + 
-        addressId.getLastName() + " is now registered in the database");
-      //out.close(); // Close stream
-    %>
+	<% storeDataId.storeStudent(addressId); %>
+	<jsp:getProperty property="firstName" name="addressId"/>
+	 and 
+	<jsp:getProperty property="lastName" name="addressId"/>
+	 is now registered in the database
 </body>
 </html>
