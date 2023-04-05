@@ -1,6 +1,6 @@
-package methodtype;
+package methodtype.overload;
 
-class Sample1 {
+class Sample2 {
     public static void main(String[] args) {
         Child child = new Child();
         child.print(10);
@@ -15,9 +15,8 @@ class Parent {
 }
 
 class Child extends Parent {
-    @Override
-    public void print(double i) {
+    // This method overloads the method in B
+    public void print(int i) {
         System.out.println(i);
     }
 }
-  
