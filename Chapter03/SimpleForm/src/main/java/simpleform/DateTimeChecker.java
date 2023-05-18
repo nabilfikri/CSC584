@@ -64,6 +64,6 @@ public class DateTimeChecker extends HttpServlet {
         out.println("<p>Selected Time Zone: " + timezone + "</p>");
         out.println("<p>Date and Time: " + formattedDate + "</p>");
 
-        // doGet(req, resp);
+         doGet(req, resp);
     }
 }
